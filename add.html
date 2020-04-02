@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>Add Poll Data</title>
+	
+	<style type="text/css">
+		table {
+		  border-collapse: collapse;
+		  border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+	<a href="index.php">Home</a>
+	<br/><br/>
+	<div id="msg"></div>
+	<form action="add.php" method="post" name="form1" >
+		<table cellpadding="10" border="0" id="polltable">
+			<tr>
+				
+				<td colspan="2"><input type="text" name="poll_name" placeholder="Poll Question"></td>
+				<td></td>
+				<td><input type="datetime-local" name="expire_date"></td>
+			</tr>
+		
+			<tr> 
+				<td><input type="text" name="poll_answer[]" placeholder="Answer 1"></td>
+				<td><input type="text" name="counter[]" placeholder="counter"></td>
+				<td><input type="text" name="color[]" placeholder="color"></td>
+				<td><input type="text" name="sort_order[]" placeholder="sort order"></td>
+			</tr>
+			<tr> 
+				<td><input type="button" id="addanswer" value="+Add Answer"></td>
+				<td><input type="submit" name="Submit" value="Save Poll"></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</form>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+</body>
+<script type="text/javascript">
+	
+	var x=1;
+	$('#addanswer').on('click',function(){
+		x++;
+		html='<tr>'+ 
+				'<td><input type="text" name="poll_answer[]" placeholder="Answer '+x+'"></td>'+
+				'<td><input type="text" name="counter[]" placeholder="counter"></td>'+
+				'<td><input type="text" name="color[]" placeholder="color"></td>'+
+				'<td><input type="text" name="sort_order[]" placeholder="sort order"></td>'+
+			'</tr>';
+		$('#polltable tr:last').before(html);
+
+	})
+</script>
+</html>
+
+
